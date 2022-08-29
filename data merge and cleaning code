@@ -1,0 +1,37 @@
+
+pacman::p_load(rio, tidyverse,janitor)
+
+#Orotta data for sample
+events_orotta <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/1. Orotta enrollment data.sav') 
+colnames(events_orotta)
+
+
+
+# Halibet data cleaning 
+events_halibet <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/Halibet Hosp/events.xls') 
+events_halibet <- events_halibet %>% clean_names()
+colnames(events_halibet)
+sum(is.na(events_halibet$national_id))
+
+
+events_1_halibet <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/Halibet Hosp/events (1).xls') 
+events_1_halibet <- events_1_halibet %>% clean_names()
+colnames(events_1_halibet)
+#sum(is.na(events_halibet$national_id))
+
+events_2_halibet <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/Halibet Hosp/events (2).xls') 
+events_2_halibet <- events_2_halibet %>% clean_names()
+colnames(events_2_halibet)
+#sum(is.na(events_halibet$national_id))
+
+halibet <- left_join(events_halibet, events_1_halibet, by= "national_id" ) 
+halibet <- left_join(halibet,events_2_halibet, by= "national_id")
+colnames(events_2_halibet)
+#sum(is.na(events_halibet$national_id))
+
+halibet_1 <- halibet %>% select(national_id, organisation_unit_code.x, address_physical.x, sex.x, date_of_birth.x, education ,marital_status, 
+                   occupation.x, patient_entry_point, pmtct_age_of_pregnancy, date_enrolled_on_hiv_care, initial_function_status,
+                   initial_clinical_stage,initial_weight_kg,initial_cd4,date_medical_eligible, adheres_counselling_number, art_started_date)
+colnames(halibet_1)
+
+write.csv(halibet_1, file = "halibet_cleaned_data.csv")
