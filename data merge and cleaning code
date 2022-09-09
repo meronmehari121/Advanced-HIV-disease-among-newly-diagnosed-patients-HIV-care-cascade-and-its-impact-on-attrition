@@ -2,7 +2,7 @@
 pacman::p_load(rio, tidyverse,janitor)
 
 #Orotta data for sample
-events_orotta <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/1. Orotta enrollment data.sav') 
+events_orotta <- rio::import(file = 'C:/Users/..............data.sav') 
 colnames(events_orotta)
 
 
