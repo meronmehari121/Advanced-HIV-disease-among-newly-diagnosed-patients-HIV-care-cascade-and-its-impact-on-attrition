@@ -8,18 +8,18 @@ colnames(events_orotta)
 
 
 # Halibet data cleaning 
-events_halibet <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/Halibet Hosp/events.xls') 
+events_halibet <- rio::import(file = 'C:/Users/..............Halibet Hosp/events.xls') 
 events_halibet <- events_halibet %>% clean_names()
 colnames(events_halibet)
 sum(is.na(events_halibet$national_id))
 
 
-events_1_halibet <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/Halibet Hosp/events (1).xls') 
+events_1_halibet <- rio::import(file = 'C:/Users/............../Halibet Hosp/events (1).xls') 
 events_1_halibet <- events_1_halibet %>% clean_names()
 colnames(events_1_halibet)
 #sum(is.na(events_halibet$national_id))
 
-events_2_halibet <- rio::import(file = 'C:/Users/mbk/OneDrive - Lane Clark & Peacock LLP/halibet dat/whole data/Halibet Hosp/events (2).xls') 
+events_2_halibet <- rio::import(file = 'C:/Users/..............Halibet Hosp/events (2).xls') 
 events_2_halibet <- events_2_halibet %>% clean_names()
 colnames(events_2_halibet)
 #sum(is.na(events_halibet$national_id))
